@@ -1,13 +1,15 @@
 <script>
-	import Navbar from '../lib/components/navbar/Navbar.svelte';
-	import { page } from '$app/state';
+	import Navbar from '$lib/components/navbar/Navbar.svelte';
+	import PageTransition from '$lib/components/PageTransition.svelte';
+	
 	import Lenis from 'lenis';
-
 	import { gsap, ScrollTrigger } from '$lib/gsap';
-
+	
 	import '../app.scss';
-	import { onMount } from 'svelte';
 
+	import { page } from '$app/state';
+	import { onMount } from 'svelte';
+	
 	onMount(() => {
 		gsap.registerPlugin(ScrollTrigger);
 		const lenis = new Lenis({
@@ -29,5 +31,6 @@
 	const { children } = $props();
 </script>
 
+<PageTransition  />
 <Navbar route={page.url.pathname.replace('/', '')} />
 {@render children()}
