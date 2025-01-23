@@ -1,5 +1,5 @@
 <script>
-	import {gsap} from '$lib/gsap';
+	import { gsap } from '$lib/gsap';
 	import { onMount } from 'svelte';
 	import NavOverlay from './NavOverlay.svelte';
 	const { route } = $props();
@@ -11,7 +11,7 @@
 	};
 </script>
 
-<NavOverlay {navOpen} />
+<NavOverlay bind:navOpen />
 
 <nav class="navbar">
 	<a href="/" class="nav-link">ritam das / {route}</a>

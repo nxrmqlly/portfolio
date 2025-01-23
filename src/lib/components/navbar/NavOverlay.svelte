@@ -1,9 +1,12 @@
 <script>
 	import { onMount } from 'svelte';
 	import { gsap } from '$lib/gsap';
-	import NavLink1 from './NavLink1.svelte';
+	import NavLink from './NavLink.svelte';
 
-	const { navOpen } = $props();
+	let { navOpen = $bindable(false) } = $props();
+	const toggleNav = () => {
+		navOpen = !navOpen;
+	};
 
 	onMount(() => {
 		const tl = gsap.timeline({
@@ -11,8 +14,8 @@
 		});
 		tl.to(['.menu'], {
 			clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-			ease: 'power4.inOut',
-			duration: 1,
+			ease: 'power4.out',
+			duration: 0.8,
 			stagger: 0.05
 		})
 			.fromTo(
@@ -23,9 +26,9 @@
 				},
 				{
 					y: 0,
-					duration: 1,
-					ease: 'power4.inOut',
-					stagger: 0.05
+					duration: 0.8,
+					ease: 'power4.out',
+					stagger: 0.06
 				},
 				'<'
 			)
@@ -33,8 +36,8 @@
 				'.blur-bg',
 				{
 					opacity: 1,
-					duration: 1,
-					ease: 'power4.inOut'
+					duration: 0.8,
+					ease: 'power4.out'
 				},
 				'<'
 			);
@@ -56,7 +59,14 @@
 		{ text: 'home', href: '/' },
 		{ text: 'about', href: '/about' },
 		{ text: 'work', href: '/work' },
-		{ text: 'random', href: '/random' }
+		{ text: 'wip', href: '/wip' }
+	];
+	const socials = [
+		{ text: 'github', href: 'https://github.com/nxrmqlly' },
+		{ text: 'instagram', href: 'https://www.instagram.com/nxrmqlly/' },
+		{ text: 'youtube', href: 'https://www.youtube.com/@nxrmqlly' },
+		{ text: 'email', href: 'mailto:ritam.das3110@outlook.com' },
+		{ text: 'X', href: 'https://x.com/Nxrmqlly' }
 	];
 </script>
 
@@ -66,14 +76,24 @@
 		<div class="menu-inner menu">
 			<div class="links-container">
 				{#each links as link}
-					<div class="link">
-						<div class="link-text">
-							<a href={link.href}>{link.text}</a>
+					<div class="nav-link link">
+						<div class="link-text" onclick={toggleNav}>
+							<NavLink1 text={link.text} href={link.href} />
 						</div>
 					</div>
 				{/each}
 			</div>
-			<div class="socials-container"></div>
+			<div class="socials-container">
+				{#each socials as social}
+					<div class="social-link link">
+						<div class="link-text">
+							<a target="_blank" rel="noopener" href={social.href}>
+								{social.text} &UpperRightArrow;
+							</a>
+						</div>
+					</div>
+				{/each}
+			</div>
 		</div>
 	</div>
 </div>
@@ -81,31 +101,70 @@
 <style lang="scss">
 	.links-container {
 		margin-top: 5vh;
+		padding-top: 5rem;
 		// width: 100%;
 		margin-right: 1rem;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
-		justify-content: center;
-		flex: 3;
+		// justify-content: center;
+		flex: 2;
 	}
 	.socials-container {
+		margin-right: 1rem;
 		flex: 1;
-	}
-	.link {
-		clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-		transition: transform 0.2s ease-in-out;
-	}
-	.link:hover {
-		transform: translateX(-1.05rem);
+		align-items: flex-end;
+		display: flex;
+		flex-direction: column;
 	}
 
-	.link-text a {
-		text-decoration: none;
+	.link {
+		clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+		transition: all 0.2s ease-in-out;
+	}
+	// .nav-link:hover {
+	// 	transform: translateX(-1.05rem);
+	// 	& a {
+	// 		color: var(--color-terracotta);
+	// 	}
+	// }
+	.social-link a::before {
+		content: '';
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 1px;
+		bottom: 0;
+		transform-origin: top right;
+		left: 0;
+		background-color: #000;
+		transform: scaleX(1);
+		transition: transform 0.4s ease;
+	}
+	.social-link:hover {
+		// transform: translateX(-1.05rem);
+		& a {
+			color: var(--color-terracotta);
+		}
+		& a::before {
+			transform: scaleX(0);
+		}
+	}
+
+	a {
 		color: var(--color-raisin);
-		font-size: 4rem;
 		font-family: 'Satoshi', sans-serif;
-		font-weight: 400;
+		text-decoration: none;
+		font-weight: 450;
+		transition: all 0.2s ease-in-out;
+	}
+
+	.nav-link {
+		height: clamp(3.2rem, 2.8364rem + 1.4545vw, 4.2rem);
+		font-size: clamp(3rem, 2.6364rem + 1.4545vw, 4rem);
+	}
+	.social-link {
+		font-size: clamp(1.5rem, 1.3182rem + 0.7273vw, 2rem);
 	}
 	.overlay {
 		display: flex;
@@ -117,7 +176,7 @@
 		height: 100vh;
 		right: 0;
 
-		width: 30%;
+		width: 20rem;
 	}
 	.menu {
 		z-index: 4;
@@ -147,17 +206,5 @@
 		width: 100%;
 		height: 100%;
 		background-color: hsla(0, 0%, 100%, 0.5);
-	}
-	//tablet
-	@media only screen and (max-width: 1024px) {
-		.overlay {
-			width: 50%;
-		}
-	}
-	//mobile
-	@media only screen and (max-width: 600px) {
-		.overlay {
-			width: 80%;
-		}
 	}
 </style>
