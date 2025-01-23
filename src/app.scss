@@ -1,0 +1,22 @@
+
+
+:root {
+    --color-ghost: hsl(240, 17%, 93%);
+    --color-raisin: hsl(233, 12%, 15%);
+    --color-terracotta: hsl(353, 63%, 58%);
+    --color-air: hsl(201, 33%, 62%);
+    --color-brunswick: hsl(156, 23%, 26%);
+}
+
+
+
+body {
+    padding: 1rem;
+    background-color: var(--color-ghost);
+}
+
+@font-face {
+    font-family: "Pixelout";
+    src: url('/fonts/Pixelout.ttf') format('truetype');
+}
+
