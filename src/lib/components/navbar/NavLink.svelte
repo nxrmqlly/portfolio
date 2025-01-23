@@ -34,6 +34,7 @@
 		overflow: hidden;
 		color: var(--color-raisin);
 		height: clamp(3.2rem, 2.8364rem + 1.4545vw, 4.2rem);
+		will-change: color, overflow, height;
 	}
 
 	:global(.nav__text:hover .nav__text__letter, .nav__text.play .nav__text__letter) {
@@ -48,5 +49,6 @@
 		display: inline-block;
 		transition: transform 0.5s cubic-bezier(0.76, 0, 0.024, 1);
 		transition-delay: calc(var(--index) * #{$transition-delay});
+		will-change: transform;
 	}
 </style>

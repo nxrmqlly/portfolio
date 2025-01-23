@@ -121,6 +121,7 @@
 	.link {
 		clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 		transition: all 0.2s ease-in-out;
+		will-change: transform, clip-path;
 	}
 	// .nav-link:hover {
 	// 	transform: translateX(-1.05rem);
@@ -140,6 +141,7 @@
 		background-color: #000;
 		transform: scaleX(1);
 		transition: transform 0.4s ease;
+		will-change: transform;
 	}
 	.social-link:hover {
 		// transform: translateX(-1.05rem);
@@ -195,6 +197,7 @@
 	.menu,
 	.menu-inner {
 		clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+		will-change: clip-path;
 	}
 	.blur-bg {
 		pointer-events: none;
@@ -206,5 +209,6 @@
 		width: 100%;
 		height: 100%;
 		background-color: hsla(0, 0%, 100%, 0.5);
+		will-change: opacity;
 	}
 </style>
