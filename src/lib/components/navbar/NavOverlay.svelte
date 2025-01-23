@@ -78,7 +78,7 @@
 				{#each links as link}
 					<div class="nav-link link">
 						<div class="link-text" onclick={toggleNav}>
-							<NavLink1 text={link.text} href={link.href} />
+							<NavLink text={link.text} href={link.href} />
 						</div>
 					</div>
 				{/each}
