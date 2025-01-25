@@ -2,38 +2,40 @@
 	import { gsap } from '$lib/gsap';
 	import { onNavigate } from '$app/navigation';
 
-	let navigatingTo = $state('');
-
 	const cover = () =>
 		new Promise((resolve) => {
-			const tl = gsap.timeline({ paused: true });
-			tl.to('.transition-overlay .pane', {
-				duration: 1,
-				stagger: -0.05,
+			gsap.fromTo(
+				'.transition-overlay .pane',
+				{ transformOrigin: 'left' },
+				{
+					duration: 1,
+					stagger: -0.1,
+					scaleX: '100%',
+					ease: 'power4.inOut',
 
-				scaleY: '100%',
-				ease: 'power4.inOut'
-			}).to('navigating-text', { y: '100%', onComplete: resolve, duration: 1 }, '<');
-
-			tl.play();
+					onComplete: resolve
+				}
+			);
 		});
 
 	const reveal = () =>
 		new Promise((resolve) => {
-			gsap.to('.transition-overlay .pane', {
-				duration: 1,
-				scaleY: 0,
-				stagger: -0.05,
-				onComplete: resolve,
+			gsap.fromTo(
+				'.transition-overlay .pane',
+				{ transformOrigin: 'right' },
+				{
+					duration: 1,
+					scaleX: 0,
+					stagger: -0.1,
+					ease: 'power4.inOut',
 
-				ease: 'power4.inOut'
-			});
+					onComplete: resolve
+				}
+			);
 		});
 
 	onNavigate((navigation) => {
 		if (navigation.from.url.pathname === navigation.to.url.pathname) return;
-
-		navigatingTo = navigation.to.url.pathname;
 
 		// biome-ignore lint/suspicious/noAsyncPromiseExecutor: <weird rule>
 		return new Promise(async (resolve) => {
@@ -48,7 +50,7 @@
 </script>
 
 <div class="transition-overlay">
-	{#each { length: 5 } as i}
+	{#each { length: 6 } as i}
 		<div class="pane"></div>
 	{/each}
 </div>
@@ -69,8 +71,8 @@
 		overflow: hidden;
 	}
 	.pane {
-		transform: scaleY(0);
-        transform-origin: top;
+		transform: scaleX(0);
+		// transform-origin: right;
 		flex: 1;
 		background-color: var(--color-raisin);
 	}
