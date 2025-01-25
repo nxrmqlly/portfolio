@@ -12,12 +12,13 @@
 		const tl = gsap.timeline({
 			paused: true
 		});
-		tl.to(['.menu'], {
-			clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-			ease: 'power4.out',
-			duration: 0.8,
-			stagger: 0.05
-		})
+		tl.set('.overlay', { visibility: 'visible' })
+			.to(['.menu'], {
+				clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+				ease: 'power4.out',
+				duration: 0.8,
+				stagger: 0.05
+			})
 			.fromTo(
 				'.link-text',
 
@@ -70,7 +71,7 @@
 	];
 </script>
 
-<div class="blur-bg"></div>
+<span class="blur-bg"></span>
 <div class="overlay">
 	<div class="menu">
 		<div class="menu-inner menu">
@@ -170,6 +171,7 @@
 	}
 	.overlay {
 		display: flex;
+		visibility: hidden;
 		flex-direction: column;
 		top: 0;
 		z-index: 3;
