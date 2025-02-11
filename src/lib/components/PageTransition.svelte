@@ -6,11 +6,11 @@
 		new Promise((resolve) => {
 			gsap.fromTo(
 				'.transition-overlay .pane',
-				{ transformOrigin: 'left' },
+				{ transformOrigin: 'top' },
 				{
 					duration: 1,
-					stagger: -0.1,
-					scaleX: '100%',
+					stagger: 0.1,
+					scaleY: '100%',
 					ease: 'power4.inOut',
 
 					onComplete: resolve
@@ -22,10 +22,10 @@
 		new Promise((resolve) => {
 			gsap.fromTo(
 				'.transition-overlay .pane',
-				{ transformOrigin: 'right' },
+				{ transformOrigin: 'bottom' },
 				{
 					duration: 1,
-					scaleX: 0,
+					scaleY: 0,
 					stagger: -0.1,
 					ease: 'power4.inOut',
 
@@ -71,8 +71,8 @@
 		overflow: hidden;
 	}
 	.pane {
-		transform: scaleX(0);
-		// transform-origin: right;
+		transform: scaleY(0);
+		transform-origin: right;
 		flex: 1;
 		background-color: var(--color-raisin);
 	}

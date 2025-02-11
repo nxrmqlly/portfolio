@@ -12,8 +12,8 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		height: 100vh;
-		width: 100vw;
+		height: 100dvh;
+		width: 100%;
 		overflow: hidden;
 	}
 </style>

@@ -19,6 +19,16 @@
 				duration: 0.8,
 				stagger: 0.05
 			})
+
+			.to(
+				'.blur-bg',
+				{
+					opacity: 1,
+					duration: 0.8,
+					ease: 'power4.out'
+				},
+				'<'
+			)
 			.fromTo(
 				'.link-text',
 
@@ -31,16 +41,7 @@
 					ease: 'power4.out',
 					stagger: 0.06
 				},
-				'<'
-			)
-			.to(
-				'.blur-bg',
-				{
-					opacity: 1,
-					duration: 0.8,
-					ease: 'power4.out'
-				},
-				'<'
+				'-=0.5'
 			);
 		tl.play();
 
@@ -60,8 +61,9 @@
 		{ text: 'home', href: '/' },
 		{ text: 'about', href: '/about' },
 		{ text: 'work', href: '/work' },
-		{ text: 'wip', href: '/wip' }
+		{ text: 'blog', href: '/wip' }
 	];
+
 	const socials = [
 		{ text: 'github', href: 'https://github.com/nxrmqlly' },
 		{ text: 'instagram', href: 'https://www.instagram.com/nxrmqlly/' },
@@ -73,30 +75,30 @@
 
 <span class="blur-bg"></span>
 <div class="overlay">
-	<div class="menu">
-		<div class="menu-inner menu">
-			<div class="links-container">
-				{#each links as link}
-					<div class="nav-link link">
-						<div class="link-text" onclick={toggleNav}>
-							<NavLink text={link.text} href={link.href} />
-						</div>
+	<!-- <div class="menu"> -->
+	<div class="menu-inner menu">
+		<div class="links-container">
+			{#each links as { text, href }}
+				<div class="nav-link link">
+					<div class="link-text" onclick={toggleNav}>
+						<NavLink {text} {href} />
 					</div>
-				{/each}
-			</div>
-			<div class="socials-container">
-				{#each socials as social}
-					<div class="social-link link">
-						<div class="link-text">
-							<a target="_blank" rel="noopener" href={social.href}>
-								{social.text} &UpperRightArrow;
-							</a>
-						</div>
+				</div>
+			{/each}
+		</div>
+		<div class="socials-container">
+			{#each socials as social}
+				<div class="social-link link">
+					<div class="link-text">
+						<a target="_blank" rel="noopener" href={social.href}>
+							{social.text} &UpperRightArrow;
+						</a>
 					</div>
-				{/each}
-			</div>
+				</div>
+			{/each}
 		</div>
 	</div>
+	<!-- </div> -->
 </div>
 
 <style lang="scss">
@@ -156,7 +158,7 @@
 
 	a {
 		color: var(--color-raisin);
-		font-family: 'Satoshi', sans-serif;
+		font-family: 'Cabinet Grotesk', sans-serif;
 		text-decoration: none;
 		font-weight: 450;
 		transition: all 0.2s ease-in-out;
@@ -186,7 +188,7 @@
 		z-index: 4;
 		height: 100%;
 		flex: 1;
-		background-color: var(--color-raisin);
+		// background-color: var(--color-raisin);
 	}
 	.menu-inner {
 		display: flex;

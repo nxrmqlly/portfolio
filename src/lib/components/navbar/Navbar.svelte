@@ -40,7 +40,7 @@
 		background: none;
 		font-size: 1.5rem;
 		text-decoration: none;
-		color: black;
+		color: var(--color-raisin);
 		font-family: 'Satoshi', sans-serif;
 	}
 	.nav-btn:hover {

@@ -28,13 +28,14 @@
 
 	:global(.nav__text) {
 		text-decoration: none;
-		font-family: 'Cabinet Grotesk';
+		font-family: 'Cabinet Grotesk', sans-serif;
+		font-weight: 450;
 		font-size: clamp(3rem, 2.6364rem + 1.4545vw, 4rem);
 		line-height: clamp(3.2rem, 2.8364rem + 1.4545vw, 4.2rem);
 		overflow: hidden;
 		color: var(--color-raisin);
 		height: clamp(3.2rem, 2.8364rem + 1.4545vw, 4.2rem);
-		will-change: color, overflow, height;
+		will-change: color, height;
 	}
 
 	:global(.nav__text:hover .nav__text__letter, .nav__text.play .nav__text__letter) {
