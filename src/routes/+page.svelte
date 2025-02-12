@@ -1,17 +1,10 @@
 <script>
 	import Hero from '../lib/components/home/Hero.svelte';
+	import About from '../lib/components/home/About.svelte';
 </script>
 
-<section class="first-section">
-	<Hero />
-</section>
+<Hero />
+<About />
 
 <style lang="scss">
-	section {
-		height: 70vh;
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
 </style>

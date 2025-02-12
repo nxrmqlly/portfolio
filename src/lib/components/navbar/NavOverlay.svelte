@@ -150,7 +150,7 @@
 		}
 	}
 
-	a {
+	.social-link a {
 		color: var(--color-raisin);
 		font-family: 'Cabinet Grotesk', sans-serif;
 		text-decoration: none;
