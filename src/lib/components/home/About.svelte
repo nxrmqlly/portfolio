@@ -18,8 +18,7 @@
 				scrollTrigger: {
 					trigger: '.text',
 					start: 'top center',
-					scrub: false,
-					markers: true
+					scrub: false
 				}
 			}
 		);
