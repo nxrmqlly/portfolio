@@ -75,5 +75,6 @@
 		transform-origin: right;
 		flex: 1;
 		background-color: var(--color-raisin);
+		will-change: transform;
 	}
 </style>

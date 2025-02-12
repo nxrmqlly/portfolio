@@ -59,8 +59,8 @@
 
 	const links = [
 		{ text: 'home', href: '/' },
-		{ text: 'about', href: '/about' },
-		{ text: 'work', href: '/work' },
+		{ text: 'about', href: '/wip' },
+		{ text: 'work', href: '/wip' },
 		{ text: 'blog', href: '/wip' }
 	];
 
@@ -75,11 +75,12 @@
 
 <span class="blur-bg"></span>
 <div class="overlay">
-	<!-- <div class="menu"> -->
 	<div class="menu-inner menu">
 		<div class="links-container">
 			{#each links as { text, href }}
 				<div class="nav-link link">
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
 					<div class="link-text" onclick={toggleNav}>
 						<NavLink {text} {href} />
 					</div>
@@ -98,7 +99,6 @@
 			{/each}
 		</div>
 	</div>
-	<!-- </div> -->
 </div>
 
 <style lang="scss">
@@ -126,12 +126,6 @@
 		transition: all 0.2s ease-in-out;
 		will-change: transform, clip-path;
 	}
-	// .nav-link:hover {
-	// 	transform: translateX(-1.05rem);
-	// 	& a {
-	// 		color: var(--color-terracotta);
-	// 	}
-	// }
 	.social-link a::before {
 		content: '';
 		position: absolute;
