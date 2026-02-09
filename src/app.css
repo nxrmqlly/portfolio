@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+
+:root {
+	--bg-color: #faf9f6;
+	--accent-color: #1e3bfa;
+}
+
+body {
+	padding-left: clamp(1rem, 4vw, 4rem);
+	padding-right: clamp(1rem, 4vw, 4rem);
+	background-color: var(--bg-color);
+	/* height: calc(100dvh - 5rem); */
+	width: 100dvw;
+	min-height: 100dvh;
+}
