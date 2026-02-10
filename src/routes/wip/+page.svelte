@@ -32,7 +32,7 @@
 		display: inline-flex;
 		gap: 0.5rem;
 		align-items: center;
-		color: var(--accent-color);
+		color: var(--color-varaccent);
 	}
 
 	a:hover {

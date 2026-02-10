@@ -1,21 +1,18 @@
 <script>
+	import './layout.css';
 	import Navbar from '$lib/components/navbar/Navbar.svelte';
 	import PageTransition from '$lib/components/pagetransition/PageTransition.svelte';
 	import NoScript from '$lib/components/noscript/NoScript.svelte';
-	
 	import Lenis from 'lenis';
 	import { gsap, ScrollTrigger } from '$lib/gsap';
-
 	import '../app.css';
-
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
 		gsap.registerPlugin(ScrollTrigger);
-		const lenis = new Lenis({
-			autoRaf: true
-		});
+
+		const lenis = new Lenis({ autoRaf: true });
 
 		lenis.on('scroll', ScrollTrigger.update);
 
@@ -30,10 +27,8 @@
 	});
 
 	const { children } = $props();
-
 </script>
 
 <NoScript />
 <PageTransition />
-<Navbar />
 {@render children()}

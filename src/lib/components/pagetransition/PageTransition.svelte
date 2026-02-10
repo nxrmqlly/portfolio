@@ -14,10 +14,9 @@
 			panes -= panes % 2; // ensure even number
 		};
 
-		window.addEventListener("resize", handler);
+		handler(); // execute once to set initial values
 		
-		handler(); // set once on mount
-
+		window.addEventListener("resize", handler);
 		return () => window.removeEventListener("resize", handler);
     });
 
@@ -54,19 +53,15 @@
 			);
 		});
 
-	onNavigate((navigation) => {
+
+	onNavigate(async (navigation) => {
 		if (navigation.from.url.pathname === navigation.to.url.pathname) return;
 
-		// biome-ignore lint/suspicious/noAsyncPromiseExecutor: <weird rule>
-		return new Promise(async (resolve) => {
-			console.log('navigation');
-			await cover();
-			resolve();
-			await navigation.complete;
-			console.log('navigation complete');
-			await reveal();
-		});
+		await cover();
+		await navigation.complete;
+		await reveal();
 	});
+
 </script>
 
 <div class="transition-overlay">
@@ -93,7 +88,7 @@
 	.pane {
 		transform: scaleX(0);
 		flex: 1;
-		background-color: var(--accent-color);
+		background-color: var(--color-varaccent);
 		will-change: transform;
 	}
 </style>

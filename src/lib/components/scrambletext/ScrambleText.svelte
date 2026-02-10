@@ -1,7 +1,8 @@
 <script>
     const { text, rounds = 3, delay = 60 } = $props();
-    let el;
     let busy = false;
+
+    let textNow = $state(text);
 
     const scramble = async () => {
         if (busy) return;
@@ -12,11 +13,11 @@
 
         for (let i = 0; i < rounds; i++) {
             const scrambledWords = words.map(word => shuffleWord(word));
-            el.textContent = scrambledWords.join(" ");
+            textNow = scrambledWords.join(" ");
             await wait(delay);
         }
 
-        el.textContent = original;
+        textNow = original;
         busy = false;
     };
 
@@ -33,6 +34,6 @@
     const wait = (ms) => new Promise(r => setTimeout(r, ms));
 </script>
 
-<span role="tooltip" bind:this={el} class="scramble-text" onmouseenter={scramble}>
-    {text}
+<span role="tooltip" onmouseenter={scramble}>
+    {textNow}
 </span>
