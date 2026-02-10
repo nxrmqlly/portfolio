@@ -28,7 +28,6 @@
 
 	const copyEmail = () => {
 		navigator.clipboard.writeText('ritamdas@duck.com');
-		alert('Email copied to clipboard!');
 	};
 </script>
 
@@ -48,13 +47,17 @@
 			You can contact me via email at <span
 				role="button"
 				tabindex="0"
-				onkeydown={() => "aria is annoing"}
+				onkeydown={() => 'aria is annoing'}
 				class="cursor-pointer underline"
 				onclick={copyEmail}>ritamdas@duck.com</span
 			>
 			or via discord, @nxrmqlly.
 			<br /><br />
-			I’m also on LinkedIn, GitHub and occasionally on Instagram
+			I’m also on
+			<a class="underline" href="https://www.linkedin.com/in/ritam-das-nxr/">LinkedIn</a>,
+			<a class="underline" href="https://github.com/nxrmqlly">GitHub</a>
+			and occasionally on
+			<a class="underline" href="https://instagram.com/nxrmqlly">Instagram</a>.
 		</FirstCard>
 	</div>
 </section>
