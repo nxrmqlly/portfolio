@@ -1,5 +1,5 @@
 <script>
-    const { text, rounds = 3, delay = 60 } = $props();
+    const { text, rounds = 5, delay = 40 } = $props();
     let busy = false;
 
     let textNow = $state(text);
