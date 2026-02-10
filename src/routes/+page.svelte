@@ -1,9 +1,9 @@
 <script>
 	import { gsap, ScrollTrigger } from '$lib/gsap';
 	import { onMount } from 'svelte';
-	import NameHeaderSVG from '$lib/components/header/NameHeaderSVG.svelte';
+	import NameHeaderSVG from '$lib/components/main/header/NameHeaderSVG.svelte';
 	import Navbar from '$lib/components/navbar/Navbar.svelte';
-	
+
 	onMount(() => {
 		let tl = gsap.timeline();
 

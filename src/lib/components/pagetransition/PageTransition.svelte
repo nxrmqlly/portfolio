@@ -5,68 +5,61 @@
 
 	let windowWidth = 0;
 	let panes = $state();
-	
-    onMount(() => {
 
-        const handler = () => {
-			windowWidth = window.innerWidth
+	onMount(() => {
+		const handler = () => {
+			windowWidth = window.innerWidth;
 			panes = Math.max(5, Math.floor(windowWidth / 100));
 			panes -= panes % 2; // ensure even number
 		};
 
-		handler(); // execute once to set initial values
-		
-		window.addEventListener("resize", handler);
-		return () => window.removeEventListener("resize", handler);
-    });
+		window.addEventListener('resize', handler);
 
-	
+		handler(); // set once on mount
+
+		return () => window.removeEventListener('resize', handler);
+	});
+
 	const cover = () =>
 		new Promise((resolve) => {
-			gsap.fromTo(
-				'.transition-overlay .pane',
-				{ transformOrigin: 'left' },
-				{
-					duration: 0.5,
-					stagger: 0.04,
-					scaleX: '101%',
-					ease: 'power4.out',
+			gsap.set('.transition-overlay .pane', { transformOrigin: 'left' });
 
-					onComplete: resolve
-				}
-			);
+			gsap.to('.transition-overlay .pane', {
+				duration: 0.5,
+				scaleX: 1.01,
+				stagger: 0.04,
+				ease: 'power4.out',
+				onComplete: resolve
+			});
 		});
 
 	const reveal = () =>
 		new Promise((resolve) => {
-			gsap.fromTo(
-				'.transition-overlay .pane',
-				{ transformOrigin: 'right' },
-				{
-					duration: 0.5,
-					scaleX: 0,
-					stagger: 0.04,
-					ease: 'power4.out',
-
-					onComplete: resolve
-				}
-			);
+			gsap.set('.transition-overlay .pane', { transformOrigin: 'right' });
+			gsap.to('.transition-overlay .pane', {
+				duration: 0.5,
+				scaleX: 0,
+				stagger: 0.04,
+				ease: 'power4.out',
+				onComplete: resolve
+			});
 		});
 
-
-	onNavigate(async (navigation) => {
+	onNavigate((navigation) => {
 		if (navigation.from.url.pathname === navigation.to.url.pathname) return;
+		return new Promise(async (resolve) => {
+			await cover();
+			resolve(); // let the navigation happen
 
-		await cover();
-		await navigation.complete;
-		await reveal();
+			await navigation.complete;
+			await reveal();
+		});
 	});
-
 </script>
 
 <div class="transition-overlay">
-	{#each {length: panes} as _}
-	<div class="pane"></div>
+	{#each { length: panes } as _}
+		<div class="pane"></div>
 	{/each}
 </div>
 

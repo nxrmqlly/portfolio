@@ -30,5 +30,9 @@
 </script>
 
 <NoScript />
+{#if page.url.pathname !== '/'}
+	<Navbar />
+{/if}
 <PageTransition />
+
 {@render children()}

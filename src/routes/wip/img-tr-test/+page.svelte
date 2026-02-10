@@ -21,9 +21,9 @@
     })
 </script>
 
-<!-- <div class="box">
+<div class="box">
     <img class="box-img" src="/ritam_dither.png" alt="" srcset="">
-</div> -->
+</div>
 
 <div class="box"></div>
 

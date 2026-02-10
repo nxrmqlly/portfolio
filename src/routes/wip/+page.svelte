@@ -3,39 +3,12 @@
 	import { ArrowLeft } from '@lucide/svelte';
 </script>
 
-<div>
-	<h1>This page is a work in progress.</h1>
-	<a href="/"><ArrowLeft /><ScrambleText text="go back"/></a>
+<div
+	class="flex min-h-screen flex-col items-center justify-center font-inter text-lg font-semibold"
+>
+	<h1 class="mb-4 text-2xl">This page is a work in progress.</h1>
+	<a href="/" class="inline-flex items-center gap-2 text-varaccent hover:underline">
+		<ArrowLeft />
+		<ScrambleText text="go back" />
+	</a>
 </div>
-
-<style>
-	div {
-		min-height: 100dvh;
-
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-
-		font-family: 'Inter', sans-serif;
-		font-weight: 600;
-		font-size: 20px;
-
-	}
-
-	h1 {
-		font-size: 24px;
-		margin-bottom: 1rem;
-	}
-
-	a {
-		display: inline-flex;
-		gap: 0.5rem;
-		align-items: center;
-		color: var(--color-varaccent);
-	}
-
-	a:hover {
-		text-decoration: underline;
-	}
-</style>
