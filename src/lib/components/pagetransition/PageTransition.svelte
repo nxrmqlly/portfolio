@@ -57,31 +57,14 @@
 	});
 </script>
 
-<div class="transition-overlay">
+<div class="transition-overlay w-screen h-screen pointer-events-none fixed top-0 left-0 z-9999 flex p-0 m-0 overflow-hidden">
 	{#each { length: panes } as _}
-		<div class="pane"></div>
+		<div class="pane transform- flex-1 bg-varaccent will-change-transform"></div>
 	{/each}
 </div>
 
 <style>
-	.transition-overlay {
-		opacity: 1;
-		pointer-events: none;
-		display: flex;
-		position: fixed;
-		width: 100vw;
-		height: 100vh;
-		top: 0;
-		left: 0;
-		margin: 0;
-		padding: 0;
-		z-index: 1000;
-		overflow: hidden;
-	}
 	.pane {
 		transform: scaleX(0);
-		flex: 1;
-		background-color: var(--color-varaccent);
-		will-change: transform;
 	}
 </style>
