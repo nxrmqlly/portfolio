@@ -3,22 +3,8 @@
 	import { onMount } from 'svelte';
 	import NameHeaderSVG from '$lib/components/header/NameHeaderSVG.svelte';
 	import Navbar from '$lib/components/navbar/Navbar.svelte';
+	
 	onMount(() => {
-		gsap.fromTo(
-			'.star',
-			{
-				transformOrigin: '50% 50%',
-				rotate: 0
-			},
-			{
-				rotate: 360,
-				duration: 10,
-				ease: 'linear',
-				// yoyo: true,
-				repeat: -1
-			}
-		);
-
 		let tl = gsap.timeline();
 
 		tl.set('.__nameheader', {
@@ -29,11 +15,9 @@
 			['.__nameheader-letter'],
 			{
 				yPercent: 120
-				// opacity: 0,
 			},
 			{
 				yPercent: 0,
-				// opacity: 1,
 				duration: 1,
 				ease: 'power4.out',
 				stagger: 0.1

@@ -1,7 +1,7 @@
 <noscript>
     <div class="noscript-warning">
         <p>
-            (R'D) <br>
+            (ritamdas) <br>
             oh no. O_o<br>
             please turn on javascript to view this website properly.<br>
         </p>
@@ -15,8 +15,8 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: var(--accent-color);
-        color: var(--bg-color);
+        background-color: var(--color-varaccent);
+        color: var(--color-ghost);
         display: flex;
         justify-content: center;
         align-items: center;
