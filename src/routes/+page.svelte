@@ -7,6 +7,7 @@
 	import ScrambleText from '$lib/components/scrambletext/ScrambleText.svelte';
 	import SocialLink from '$lib/components/main/firstcard/SocialLink.svelte';
 	import Blinds from '$lib/components/blinds/Blinds.svelte';
+	import Konami from '$lib/components/konami/Konami.svelte';
 
 	let blindsRef = $state();
 	onMount(async () => {
@@ -73,3 +74,4 @@
 		</FirstCard>
 	</div>
 </section>
+<Konami />
