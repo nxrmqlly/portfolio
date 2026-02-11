@@ -4,13 +4,24 @@
 	import NameHeaderSVG from '$lib/components/main/header/NameHeaderSVG.svelte';
 	import Navbar from '$lib/components/navbar/Navbar.svelte';
 	import FirstCard from '$lib/components/main/firstcard/FirstCard.svelte';
+	import ScrambleText from '$lib/components/scrambletext/ScrambleText.svelte';
+	import SocialLink from '$lib/components/main/firstcard/SocialLink.svelte';
+	import Blinds from '$lib/components/blinds/Blinds.svelte';
 
-	onMount(() => {
+	let blindsRef = $state();
+	onMount(async () => {
 		let tl = gsap.timeline();
+
+		tl.set('.__nameheader-letter', {
+			yPercent: 120
+		});
 
 		tl.set('.__nameheader', {
 			clipPath: 'inset(0% 0% 0% 0%)'
 		});
+
+		blindsRef?.reveal();
+		await blindsRef?.completed;
 
 		tl.fromTo(
 			['.__nameheader-letter'],
@@ -31,6 +42,7 @@
 	};
 </script>
 
+<!-- <Blinds bind:this={blindsRef} startclosed /> -->
 <section class="">
 	<div class="pt-10 pb-10">
 		<NameHeaderSVG />
@@ -54,10 +66,10 @@
 			or via discord, @nxrmqlly.
 			<br /><br />
 			I’m also on
-			<a class="underline" href="https://www.linkedin.com/in/ritam-das-nxr/">LinkedIn</a>,
-			<a class="underline" href="https://github.com/nxrmqlly">GitHub</a>
+			<SocialLink href="https://www.linkedin.com/in/ritam-das-nxr/" text="LinkedIn" />,
+			<SocialLink href="https://github.com/nxrmqlly" text="GitHub" />
 			and occasionally on
-			<a class="underline" href="https://instagram.com/nxrmqlly">Instagram</a>.
+			<SocialLink href="https://instagram.com/nxrmqlly" text="Instagram" />
 		</FirstCard>
 	</div>
 </section>

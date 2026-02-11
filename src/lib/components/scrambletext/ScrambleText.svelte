@@ -34,6 +34,6 @@
     const wait = (ms) => new Promise(r => setTimeout(r, ms));
 </script>
 
-<span role="tooltip" onmouseenter={scramble}>
+<span role="none" onmouseenter={scramble}>
     {textNow}
 </span>
