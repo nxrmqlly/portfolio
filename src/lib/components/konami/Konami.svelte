@@ -41,3 +41,5 @@
 </script>
 
 <svelte:document onkeydown={keyhandler} />
+
+<p class="w-full text-center font-inter font-semibold text-gray-400 pb-2 text-lg">have you tried ↑ ↑ ↓ ↓ ← → ← → B A     ?</p>
