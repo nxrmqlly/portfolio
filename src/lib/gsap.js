@@ -1,19 +1,10 @@
-import { browser } from '$app/environment';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
+import { SplitText } from 'gsap/dist/SplitText';
 
-let gsap;
-let ScrollTrigger;
-let SplitText;
-
-if (browser) {
-	const gsapModule = await import('gsap');
-	const scrollTriggerModule = await import('gsap/dist/ScrollTrigger');
-	const splitTextModule = await import('gsap/dist/SplitText');
-
-	gsap = gsapModule.gsap || gsapModule.default;
-	ScrollTrigger = scrollTriggerModule.ScrollTrigger || scrollTriggerModule.default;
-	SplitText = splitTextModule.SplitText || splitTextModule.default;
-
-	gsap.registerPlugin(ScrollTrigger, SplitText);
-}
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText);
+gsap.registerPlugin(ScrollSmoother);
 
 export { gsap, ScrollTrigger, SplitText };

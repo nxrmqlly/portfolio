@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { gsap } from '$lib/gsap';
+	import { gsap } from '$lib/gsap.js';
 	import { onNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
 
@@ -22,7 +22,7 @@
 		return () => window.removeEventListener('resize', handler);
 	});
 
-	let currentAnimation = $state(Promise.resolve());
+	let currentAnimation = $state<any>(Promise.resolve());
 
 	export const cover = () => {
 		const anim = gsap.to('.transition-overlay .pane', {
