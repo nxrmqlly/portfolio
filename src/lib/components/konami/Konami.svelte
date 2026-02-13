@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	let allowedKeys = {
 		37: 'left',
 		38: 'up',
@@ -42,4 +42,4 @@
 
 <svelte:document onkeydown={keyhandler} />
 
-<p class="w-full text-center font-inter font-semibold text-gray-400 pb-2 text-lg">have you tried ↑ ↑ ↓ ↓ ← → ← → B A     ?</p>
+<p class="z-50 w-full text-center absolute bottom-0 font-inter font-semibold text-gray-400 pb-2 text-lg">have you tried ↑ ↑ ↓ ↓ ← → ← → B A     ?</p>

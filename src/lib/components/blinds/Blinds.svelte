@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { gsap } from '$lib/gsap';
 	import { onNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
@@ -6,7 +6,7 @@
 	const { startclosed = false } = $props();
 
 	let windowWidth = 0;
-	let panes = $state();
+	let panes = $state<number>(0);
 
 	onMount(() => {
 		const handler = () => {

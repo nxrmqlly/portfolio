@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
 	const { children } = $props();
 
 	// Svelte 5 Runes for state management
 	let mouse = $state({ x: 0, y: 0 });
 	let randomString = $state('');
-	let containerRef = $state();
+	let containerRef = $state<HTMLElement>();
 
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 

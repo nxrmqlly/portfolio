@@ -2,7 +2,7 @@
 
 :root {
 	--ghost: oklch(98.205% 0.004 91.461);
-	--varaccent: oklch(49.378% 0.27583 266.272);
+	--varaccent: #1e3bfa
 }
 
 @theme {
@@ -14,9 +14,14 @@
 	--font-gambarino: 'Gambarino', sans-serif;
 }
 
+@layer components {
+	.section-px {
+		padding-left: clamp(1rem, 3vw, 2.5rem);
+		padding-right: clamp(1rem, 3vw, 2.5rem);
+	}
+}
+
 body {
-	padding-left: clamp(1rem, 3vw, 2.5rem);
-	padding-right: clamp(1rem, 3vw, 2.5rem);
 	background-color: var(--color-ghost);
 	/* height: calc(100dvh - 5rem); */
 	width: 100dvw;

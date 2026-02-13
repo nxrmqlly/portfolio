@@ -7,7 +7,7 @@
 	];
 </script>
 
-<nav class="navbar border-b-4 sticky text-varaccent text-3xl py-4 top-0 left-0 w-full z-300 flex justify-between font-inter font-semibold">
+<nav class="navbar border-b-4 text-3xl py-4 top-0 left-0 w-full z-300 flex justify-between font-inter font-semibold">
 	<div href="/" class="grid grid-cols-2 gap-1">
 		<span>
 			<NavbarLink nounderline href="/" text="ritamdas"/>

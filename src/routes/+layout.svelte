@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import './layout.css';
 	import Navbar from '$lib/components/navbar/Navbar.svelte';
 	import PageTransition from '$lib/components/pagetransition/PageTransition.svelte';
@@ -18,7 +18,7 @@
 
 		// Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
 		// This ensures Lenis's smooth scroll animation updates on each GSAP tick
-		gsap.ticker.add((time) => {
+		gsap.ticker.add((time: number) => {
 			lenis.raf(time * 1000); // Convert time from seconds to milliseconds
 		});
 
@@ -31,7 +31,7 @@
 
 <NoScript />
 {#if page.url.pathname !== '/'}
-	<Navbar />
+	<div class="section-px"><Navbar /></div>
 {/if}
 <PageTransition />
 
