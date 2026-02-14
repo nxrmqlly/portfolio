@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import AsciiGradient from './AsciiGradient.svelte';
 	import MonoAscii from './MonoAscii.svelte';
 </script>

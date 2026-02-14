@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
     import ScrambleText from "$lib/components/scrambletext/ScrambleText.svelte";
 
     const { href, text, classes = '' } = $props();

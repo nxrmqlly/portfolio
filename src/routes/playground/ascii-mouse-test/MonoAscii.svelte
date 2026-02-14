@@ -1,5 +1,5 @@
-<script lang="ts">
-	let container: HTMLElement;
+<script>
+	let container;
 	let mouse = $state({ x: -1000, y: -1000 }); // Start off-screen
 	let width = $state(0);
 	let height = $state(0);

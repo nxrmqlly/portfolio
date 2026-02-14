@@ -6,7 +6,7 @@
 	const { startclosed = false } = $props();
 
 	let windowWidth = 0;
-	let panes = $state<number>(0);
+	let panes = $state(0);
 
 	onMount(() => {
 		const handler = () => {
