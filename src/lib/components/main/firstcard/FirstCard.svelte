@@ -1,12 +1,12 @@
 <script>
-	const { heading, children } = $props();
+	const { heading, children, classes = '' } = $props();
 </script>
 
-<div class="card h-[200vh]">
-	<h1 class="pt-5 font-gambarino text-7xl text-varaccent">
+<div class="card {classes}">
+	<h1 class="pt-2 font-gambarino text-5xl md:pt-5 md:text-7xl">
 		{heading}
 	</h1>
-	<p class="mt-5 font-inter text-2xl font-semibold text-varaccent tracking-tight">
+	<p class="text-md mt-2 font-inter font-semibold tracking-tight md:mt-5 md:text-xl lg:text-2xl">
 		{@render children()}
 	</p>
 </div>

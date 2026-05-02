@@ -3,17 +3,19 @@
 	let links = [
 		{ href: '/wip', text: 'leadership' },
 		{ href: '/wip', text: 'projects' },
-		{ href: '/wip', text: 'let\'s talk' },
+		{ href: '/wip', text: "let's talk" }
 	];
 </script>
 
-<nav class="navbar border-b-4 sticky text-varaccent text-3xl py-4 top-0 left-0 w-full z-300 flex justify-between font-inter font-semibold">
+<nav
+	class="navbar sticky top-0 left-0 z-300 flex w-full justify-between border-b-2 py-2 font-inter text-sm font-semibold md:border-b-4 md:text-xl lg:py-4 lg:text-3xl"
+>
 	<div href="/" class="grid grid-cols-2 gap-1">
 		<span>
-			<NavbarLink nounderline href="/" text="ritamdas"/>
+			<NavbarLink nounderline href="/" text="ritamdas" />
 		</span><span>&copy;</span>
 	</div>
-	<div class="grid grid-cols-3 gap-4">
+	<div class="grid grid-cols-3 lg:gap-4">
 		{#each links as link}
 			<div class="text-right">
 				<NavbarLink href={link.href} text={link.text} />
@@ -26,5 +28,4 @@
 	.navbar {
 		font-variant-ligatures: none;
 	}
-
 </style>

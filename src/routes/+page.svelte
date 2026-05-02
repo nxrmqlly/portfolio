@@ -34,126 +34,111 @@
 				stagger: 0.1
 			}
 		);
-
-		let sections = document.querySelectorAll('section');
-		sections.forEach((section, index) => {
-			const container = section.querySelector('.content-container');
-			if (!container) return;
-
-			gsap.to(container, {
-				rotation: 0,
-				ease: 'none',
-				scrollTrigger: {
-					trigger: section,
-					start: 'top bottom',
-					end: 'top 20%',
-					scrub: true
-				}
-			});
-			if (sections.length - 1 === index) return;
-
-			ScrollTrigger.create({
-				trigger: section,
-				start: 'bottom bottom',
-				end: 'bottom top',
-				pin: true,
-				pinSpacing: false
-			});
-		});
-
-		// gsap.set('.hello-www', {
-		// 	x: '-100%'
-		// });
-
-		// gsap.to('.hello-www', {
-		// 	scrollTrigger: {
-		// 		trigger: '.hello-www',
-		// 		start: 'top bottom',
-		// 		end: 'bottom bottom',
-		// 		scrub: true
-		// 	},
-		// 	x: '0%',
-		// 	y: '0%',
-
-		// 	ease: 'none'
-		// });
 	});
 
 	const copyEmail = () => {
-		navigator.clipboard.writeText('ritamdas@duck.com');
+		navigator.clipboard.writeText('hey@ritam.cc');
 	};
 </script>
 
 <!-- <Blinds bind:this={blindsRef} startclosed /> -->
-<section class="relative top-0 z-10 h-screen overflow-hidden">
-	<div class="content-container section-px bg-ghost text-varaccent">
-		<div class="pt-10 pb-10">
-			<NameHeaderSVG />
-		</div>
+<section class="section-px sticky top-0 z-10 h-screen overflow-hidden">
+	<div class="py-3 md:py-10">
+		<NameHeaderSVG />
+	</div>
+	<div class="nav-cont sticky bg-ghost text-varaccent">
 		<Navbar />
-		<div class="mt-10 grid grid-cols-2 gap-40">
-			<FirstCard heading="whoami?" classes="text-varaccent">
-				Hey, I’m Ritam Das, an eleventh grade high school student based in India, currently learning
-				about Machine Learning, delving into competitive programming (send help) and have a thing
-				for design. This website serves as my portfolio/blog.
-			</FirstCard>
-			<FirstCard heading="let's chat!" classes="text-varaccent">
-				You can contact me via email at <span
-					role="button"
-					tabindex="0"
-					onkeydown={() => 'aria is annoing'}
-					class="cursor-pointer underline"
-					onclick={copyEmail}>ritamdas@duck.com</span
-				>
-				or via discord, @nxrmqlly.
-				<br /><br />
-				I’m also on
-				<SocialLink href="https://www.linkedin.com/in/ritam-das-nxr/" text="LinkedIn" />,
-				<SocialLink href="https://github.com/nxrmqlly" text="GitHub" />
-				and occasionally on
-				<SocialLink href="https://instagram.com/nxrmqlly" text="Instagram" />
-			</FirstCard>
-		</div>
+	</div>
+	<div class="grid grid-rows-2 gap-15 md:mt-10 md:grid-cols-2 md:gap-20 lg:gap-40">
+		<FirstCard heading="whoami?" classes="text-varaccent">
+			hello, I’m ritam, an twelfth grade high school student based in india, currently building
+			hardware projects. also, i have a thing for design. this website serves as my portfolio/blog.
+			<br /><br />
+			working on my hackathon event,
+			<SocialLink href="https://ccuhacks.in" text="@ccuhacks 2026" /> -- you can come too!
+		</FirstCard>
+		<FirstCard heading="let's chat!" classes="text-varaccent">
+			You can contact me via email at <span
+				role="button"
+				tabindex="0"
+				onkeydown={() => alert('copied to clipboard!')}
+				class="cursor-pointer underline"
+				onclick={copyEmail}>hey@ritam.cc</span
+			>
+			<br /><br />
+			I’m also on
+			<SocialLink href="https://www.linkedin.com/in/ritam-das-nxr/" text="LinkedIn" />,
+			<SocialLink href="https://github.com/nxrmqlly" text="GitHub" />
+			and occasionally on
+			<SocialLink href="https://instagram.com/nxrmqlly" text="Instagram" />
+		</FirstCard>
 	</div>
 </section>
 
-<section class="hello-www relative top-0 left-0 h-screen w-full overflow-hidden">
-	<div class="content-container section-px z-20 bg-varaccent text-ghost">
+<section
+	class="hello-www section-px sticky top-0 left-0 z-20 min-h-screen w-full overflow-hidden bg-varaccent"
+>
+	<div class="text-ghost">
 		<Navbar />
-		<div class="grid grid-cols-2 gap-40 text-ghost">
-
-			<FirstCard heading="hello, www!" classes="text-ghost">
-				This site isn’t to tell you that I “build digital experiences” or whatever, it’s supposed to
-				showcase my personality so, you’ll find a lot of “unhinged” writing around here. The more
-				“serious stuff” is on /blog on this website (keep scrolling). <br /> <br /> Honestly, the web
-				has become boring, its all just white and blue business websites (oh wait.... this is white and
-				blue too) and on the other side of the spectrum, we have the Y2K style websites which are totally
-				impossible to read but, I must agree, they are pretty cool.
-			</FirstCard>
-		</div>
 	</div>
-</section>
-
-<footer class="relative top-0 left-0 z-30 h-[50vh] overflow-hidden">
 	<div
-		class="section-px flex h-full items-center justify-center font-gambarino text-3xl text-varaccent"
+		class=" flex flex-col items-center justify-center gap-15 text-ghost md:mt-10 md:grid-cols-2 md:gap-10 lg:gap-15"
+	>
+		<div class="pt-5 font-gambarino text-5xl md:pt-5 md:text-7xl">forgive me im just a teen.</div>
+		<p
+			class="text-md mt-2 max-w-[90%] text-center font-inter font-semibold tracking-tight md:mt-5 md:max-w-[70%] md:text-xl lg:max-w-[50%] lg:text-2xl"
+		>
+			This site isn’t to tell you that I “build digital experiences” or whatever, it’s supposed to
+			showcase my personality so, you’ll find a lot of “unhinged” writing around here. The more
+			“serious stuff” is on /blog on this website (keep scrolling -- but the website isnt finished).
+			<br /> <br />
+			Honestly, the web has become boring, its all just white and blue business websites (oh wait....
+			this is white and blue too) and on the other side of the spectrum, we have the Y2K style websites
+			which are totally impossible to read but, I must agree, they are pretty cool.
+		</p>
+		<!-- <div class="grid grid-cols-2 gap-10 md:grid-rows-2">
+			<div class="h-20 w-20 bg-red-400">
+				
+				<img src="/ritam_dither.png" alt="me" />
+			</div>
+			<div class="h-20 w-20 bg-red-400"></div>
+		</div> -->
+	</div>
+</section>
+
+<section
+	class="section-px relative top-0 left-0 z-20 min-h-screen w-full overflow-hidden bg-white text-varaccent"
+>
+	<div class="text-varaccent">
+		<Navbar />
+	</div>
+	<div
+		class="flex flex-col items-center justify-center gap-15 md:mt-10 md:grid-cols-2 md:gap-10 lg:gap-15"
+	>
+		<FirstCard heading="some of my stuff that i think im proud of">
+			<div>i told you</div>
+			<div>the website was</div>
+			<div>not finished</div>
+			<div>have a look at my <SocialLink href="https://github.com/nxrmqlly" text="GitHub" /></div>
+		</FirstCard>
+	</div>
+</section>
+
+<footer class="ftr-sec relative top-0 left-0 z-30 h-[50vh] overflow-hidden bg-varaccent text-white">
+	<div
+		class="bt-2 ftr-txt section-px flex h-full flex-col items-center justify-center border-varaccent text-center font-gambarino text-3xl"
 	>
 		good things happen when you reach out!
+		<br />
+		<span
+			role="button"
+			tabindex="0"
+			onkeydown={() => alert('copied to clipboard!')}
+			class="cursor-pointer underline"
+			onclick={copyEmail}>hey@ritam.cc</span
+		>
+		<span class="absolute bottom-2 lg:visible">
+			<Konami />
+		</span>
 	</div>
-	<span class="lg:visible">
-		<Konami />
-	</span>
 </footer>
-
-<style>
-	.content-container {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		transform: rotate(30deg);
-		transform-origin: bottom left;
-		will-change: transform;
-	}
-</style>
