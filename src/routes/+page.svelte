@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { gsap, ScrollTrigger } from '$lib/gsap.js';
+	import { gsap, SplitText } from '$lib/gsap.js';
 	import { onMount } from 'svelte';
 	import NameHeaderSVG from '$lib/components/main/header/NameHeaderSVG.svelte';
 	import Navbar from '$lib/components/navbar/Navbar.svelte';
@@ -53,6 +53,28 @@
 				stagger: 0.1
 			}
 		);
+
+		function setupSplits() {
+			const targets = gsap.utils.toArray('.scroll-text-reveal');
+			targets.forEach((target: gsap.DOMTarget) => {
+				let SplitClient = new SplitText(target, { type: 'words' });
+				let chars = SplitClient.words; //an array of all the divs that wrap each character
+				gsap.from(chars, {
+					duration: 1.5,
+					opacity: 0,
+					ease: 'power4.out',
+					stagger: 0.2,
+					scrollTrigger: {
+						trigger: target,
+						markers: true,
+						start: 'top 80%',
+						end: 'bottom 40%',
+						scrub: true
+					}
+				});
+			});
+		}
+		setupSplits();
 	});
 
 	const copyEmail = () => {
@@ -101,7 +123,7 @@
 		<Navbar />
 	</div>
 	<div
-		class=" flex flex-col items-center justify-center gap-15 text-ghost md:mt-10 md:grid-cols-2 md:gap-10 lg:gap-15"
+		class="scroll-text-reveal flex flex-col items-center justify-center gap-15 text-ghost md:mt-10 md:grid-cols-2 md:gap-10 lg:gap-15"
 	>
 		<div class="pt-5 font-gambarino text-5xl md:pt-5 md:text-7xl">forgive me im just a teen.</div>
 		<p
@@ -132,7 +154,7 @@
 		<Navbar />
 	</div>
 	<div
-		class="flex flex-col items-center justify-center gap-15 md:mt-10 md:grid-cols-2 md:gap-10 lg:gap-15"
+		class="scroll-text-reveal flex flex-col items-center justify-center gap-15 md:mt-10 md:grid-cols-2 md:gap-10 lg:gap-15"
 	>
 		<FirstCard heading="some of my stuff that i think im proud of">
 			<div>i told you</div>
