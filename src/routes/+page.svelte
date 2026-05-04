@@ -7,9 +7,28 @@
 	import ScrambleText from '$lib/components/scrambletext/ScrambleText.svelte';
 	import SocialLink from '$lib/components/main/firstcard/SocialLink.svelte';
 	import Blinds from '$lib/components/blinds/Blinds.svelte';
-	import Konami from '$lib/components/konami/Konami.svelte';
+	import Footer from '$lib/components/footer/Footer.svelte';
 
 	// let blindsRef = $state();
+
+	const varColors = [
+		'oklch(49.378% 0.27583 266.272)', // blue
+		'oklch(65.24% 0.2232 8.01)' // pink
+
+		// TODO: decide if u want more colors
+		// 'oklch(65.414% 0.12842 169.843)' // teal
+	];
+	// when header is clicked, change sitewide color
+
+	const handleHeaderClick = () => {
+		const currentColor = getComputedStyle(document.documentElement)
+			.getPropertyValue('--varaccent')
+			.trim();
+		const currentIndex = varColors.findIndex((color) => color === currentColor);
+		const nextColor = varColors[(currentIndex + 1) % varColors.length];
+		document.documentElement.style.setProperty('--varaccent', nextColor);
+	};
+
 	onMount(async () => {
 		let headerTL = gsap.timeline();
 		headerTL
@@ -43,7 +62,7 @@
 
 <!-- <Blinds bind:this={blindsRef} startclosed /> -->
 <section class="section-px sticky top-0 z-10 h-screen overflow-hidden">
-	<div class="py-3 md:py-10">
+	<div class="py-3 md:py-10" onmousedown={handleHeaderClick} role="button" tabindex="0">
 		<NameHeaderSVG />
 	</div>
 	<div class="nav-cont sticky bg-ghost text-varaccent">
@@ -124,21 +143,4 @@
 	</div>
 </section>
 
-<footer class="ftr-sec relative top-0 left-0 z-30 h-[50vh] overflow-hidden bg-varaccent text-white">
-	<div
-		class="bt-2 ftr-txt section-px flex h-full flex-col items-center justify-center border-varaccent text-center font-gambarino text-3xl"
-	>
-		good things happen when you reach out!
-		<br />
-		<span
-			role="button"
-			tabindex="0"
-			onkeydown={() => alert('copied to clipboard!')}
-			class="cursor-pointer underline"
-			onclick={copyEmail}>hey@ritam.cc</span
-		>
-		<span class="absolute bottom-2 lg:visible">
-			<Konami />
-		</span>
-	</div>
-</footer>
+<Footer />
