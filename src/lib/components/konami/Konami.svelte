@@ -34,12 +34,14 @@
 		const soundarr = ['fahh', 'raah', 'hellnah'];
 		const sound = soundarr[Math.floor(Math.random() * soundarr.length)];
 
-		let audio = new Audio(`${sound}.mp3`);
-		alert('turn your sound on!');
+		let audio = new Audio(`/audio/meme/totally/not/konami/easter/egg/${sound}.mp3`);
+		// alert('turn your sound on!');
 		audio.play();
 	};
 </script>
 
 <svelte:document onkeydown={keyhandler} />
 
-<p class="w-full text-center font-inter font-semibold text-gray-400 pb-2 text-lg">have you tried ↑ ↑ ↓ ↓ ← → ← → B A     ?</p>
+<p class="w-full pb-2 text-center font-inter text-lg font-semibold text-gray-400">
+	have you tried ↑ ↑ ↓ ↓ ← → ← → B A ?
+</p>
