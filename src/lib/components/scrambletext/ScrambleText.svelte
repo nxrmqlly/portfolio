@@ -1,39 +1,49 @@
 <script>
-    const { text, rounds = 5, delay = 40 } = $props();
-    let busy = false;
+	const { norandom = false, text, rounds = 5, delay = 40 } = $props();
+	let busy = false;
 
-    let textNow = $state(text);
+	let textNow = $state(text);
 
-    const scramble = async () => {
-        if (busy) return;
-        busy = true;
- 
-        const original = text;
-        const words = original.split(" "); // preserve spaces
+	const scramble = async () => {
+		if (busy) return;
+		busy = true;
 
-        for (let i = 0; i < rounds; i++) {
-            const scrambledWords = words.map(word => shuffleWord(word));
-            textNow = scrambledWords.join(" ");
-            await wait(delay);
-        }
+		const original = text;
+		const words = original.split(' '); // preserve spaces
 
-        textNow = original;
-        busy = false;
-    };
+		for (let i = 0; i < rounds; i++) {
+			const scrambledWords = words.map((word) => shuffleWord(word));
+			textNow = scrambledWords.join(' ');
+			await wait(delay);
+		}
 
-    // Fisher-Yates shuffle
-    const shuffleWord = (word) => {
-        const chars = [...word];
-        for (let i = chars.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [chars[i], chars[j]] = [chars[j], chars[i]]; // swap
-        }
-        return chars.join("");
-    };
+		textNow = original;
+		busy = false;
+	};
 
-    const wait = (ms) => new Promise(r => setTimeout(r, ms));
+	// Fisher-Yates shuffle
+	const shuffleWord = (word) => {
+		const chars = [...word];
+		for (let i = chars.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[chars[i], chars[j]] = [chars[j], chars[i]]; // swap
+		}
+		return chars.join('');
+	};
+
+	const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+	// random chance of shuffling throughout the day
+	if (!norandom) {
+		setInterval(() => {
+			if (Math.random() < 0.1) {
+				// 10% chance every 1s
+				scramble();
+			}
+		}, 2000);
+	}
 </script>
 
 <span role="none" onmouseenter={scramble}>
-    {textNow}
+	{textNow}
 </span>
